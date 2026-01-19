@@ -25,7 +25,7 @@ public class GemstoneCrabOverlay extends Overlay
 	@Override
 	public Dimension render(Graphics2D graphics)
 	{
-		if (plugin.isShouldFlash())
+		if (plugin.isShouldFlash() && plugin.getFlashStartTime() > 0)
 		{
 			long elapsedTime = System.currentTimeMillis() - plugin.getFlashStartTime();
 			int flashInterval = config.flashInterval();
@@ -34,9 +34,13 @@ public class GemstoneCrabOverlay extends Overlay
 			
 			if (flashOn)
 			{
-				Color flashColor = config.flashColor();
-				graphics.setColor(flashColor);
-				graphics.fillRect(0, 0, graphics.getClipBounds().width, graphics.getClipBounds().height);
+				java.awt.Rectangle clipBounds = graphics.getClipBounds();
+				if (clipBounds != null)
+				{
+					Color flashColor = config.flashColor();
+					graphics.setColor(flashColor);
+					graphics.fillRect(0, 0, clipBounds.width, clipBounds.height);
+				}
 			}
 		}
 
