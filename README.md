@@ -166,7 +166,3 @@ For issues or questions:
 2. Verify plugin is enabled and configured correctly
 3. Ensure RuneLite is up to date
 4. Rebuild and redeploy if issues persist
-
----
-
-**Note**: This plugin is for development/testing purposes. For production use, consider submitting to the RuneLite Plugin Hub.
